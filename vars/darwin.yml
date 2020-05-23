@@ -1,0 +1,3 @@
+---
+gosec_os: darwin
+gosec_privilege_escalate: False

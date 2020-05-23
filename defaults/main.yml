@@ -1,0 +1,16 @@
+---
+# defaults file for ansible-gosec
+gosec_ver: 2.3.0
+gosec_os: linux
+gosec_arch: amd64
+gosec_mirror: 'https://github.com/securego/gosec/releases/download'
+
+gosec_parent_install_dir: /usr/local
+gosec_privilege_escalate: True
+
+gosec_checksums:
+  2.3.0:
+    # https://github.com/securego/gosec/releases/download/v2.3.0/gosec_2.3.0_darwin_amd64.tar.gz
+    darwin_amd64: sha256:36567a28bb2e206ed93b8cc981fd803118e5beb286a01fe811ea6f935ba82deb
+    # https://github.com/securego/gosec/releases/download/v2.3.0/gosec_2.3.0_linux_amd64.tar.gz
+    linux_amd64: sha256:4be6ce9a9378b6ad594911b8477c06454fa5c31e56530b3152340294488fc45e

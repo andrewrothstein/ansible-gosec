@@ -1,0 +1,61 @@
+---
+# tasks file for ansible-gosec
+- name: resolve platform specific vars
+  include_vars: '{{ item }}'
+  with_first_found:
+    - files:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+      skip: true
+      paths:
+        - '{{ role_path }}/vars'
+- name: look for existing install
+  become: '{{ gosec_privilege_escalate }}'
+  become_user: root
+  changed_when: False
+  stat:
+    path: '{{ gosec_install_dir }}'
+  register: gosec_binary
+- when: not gosec_binary.stat.exists
+  block:
+    - name: download gosec {{ gosec_ver }}
+      become: '{{ gosec_privilege_escalate }}'
+      become_user: root
+      get_url:
+        url: '{{ gosec_url }}'
+        checksum: '{{ gosec_checksum }}'
+        dest: /tmp/{{ gosec_archive }}
+        mode: 0644
+    - name: make versioned directory to hold gosec {{ gosec_ver }}
+      become: '{{ gosec_privilege_escalate }}'
+      become_user: root
+      file:
+        path: '{{ gosec_install_dir }}'
+        state: directory
+        mode: 0755
+    - name: unarchive gosec {{ gosec_ver }}
+      become: '{{ gosec_privilege_escalate }}'
+      become_user: root
+      unarchive:
+        remote_src: yes
+        src: /tmp/{{ gosec_archive }}
+        dest: '{{ gosec_install_dir }}'
+        creates: '{{ gosec_install_exe }}'
+  always:
+    - name: clean up
+      become: '{{ gosec_privilege_escalate }}'
+      become_user: root
+      file:
+        path: /tmp/{{ gosec_archive }}
+        state: absent
+- name: link gosec and gosec-{{ gosec_ver }}
+  become: '{{ gosec_privilege_escalate }}'
+  become_user: root
+  with_items:
+    - '{{ gosec_link }}'
+    - '{{ gosec_ver_link }}'
+  file:
+    src: '{{ gosec_install_exe }}'
+    dest: '{{ item }}'
+    state: link

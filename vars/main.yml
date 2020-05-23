@@ -1,0 +1,10 @@
+---
+# vars file for ansible-gosec
+gosec_platform: '{{ gosec_os }}_{{ gosec_arch }}'
+gosec_archive: gosec_{{ gosec_ver }}_{{ gosec_platform }}.{{ gosec_archive_type | default("tar.gz") }}
+gosec_url: '{{ gosec_mirror }}/v{{ gosec_ver }}/{{ gosec_archive }}'
+gosec_checksum: '{{ gosec_checksums[gosec_ver][gosec_platform] }}'
+gosec_install_dir: '{{ gosec_parent_install_dir }}/gosec-{{ gosec_ver }}'
+gosec_install_exe: '{{ gosec_install_dir }}/gosec'
+gosec_link: '{{ gosec_parent_install_dir }}/bin/gosec'
+gosec_ver_link: '{{ gosec_link  }}-{{ gosec_ver }}'
