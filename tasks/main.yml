@@ -10,44 +10,44 @@
       skip: true
       paths:
         - '{{ role_path }}/vars'
-- name: look for existing install
+- name: look for existing install in {{ gosec_install_dir }}
   become: '{{ gosec_privilege_escalate }}'
   become_user: root
-  changed_when: False
+  changed_when: false
   stat:
     path: '{{ gosec_install_dir }}'
   register: gosec_binary
 - when: not gosec_binary.stat.exists
   block:
-    - name: download gosec {{ gosec_ver }}
+    - name: downloading {{ gosec_url }}
       become: '{{ gosec_privilege_escalate }}'
       become_user: root
       get_url:
         url: '{{ gosec_url }}'
         checksum: '{{ gosec_checksum }}'
-        dest: /tmp/{{ gosec_archive }}
+        dest: '{{ gosec_tmp_archive }}'
         mode: 0644
-    - name: make versioned directory to hold gosec {{ gosec_ver }}
+    - name: mkdir {{ gosec_install_dir }}
       become: '{{ gosec_privilege_escalate }}'
       become_user: root
       file:
         path: '{{ gosec_install_dir }}'
         state: directory
         mode: 0755
-    - name: unarchive gosec {{ gosec_ver }}
+    - name: unarchive {{ gosec_tmp_archive }} to {{ gosec_install_dir }}
       become: '{{ gosec_privilege_escalate }}'
       become_user: root
       unarchive:
-        remote_src: yes
-        src: /tmp/{{ gosec_archive }}
+        remote_src: true
+        src: '{{ gosec_tmp_archive }}'
         dest: '{{ gosec_install_dir }}'
         creates: '{{ gosec_install_exe }}'
   always:
-    - name: clean up
+    - name: rm -f {{ gosec_tmp_archive }}
       become: '{{ gosec_privilege_escalate }}'
       become_user: root
       file:
-        path: /tmp/{{ gosec_archive }}
+        path: '{{ gosec_tmp_archive }}'
         state: absent
 - name: link gosec and gosec-{{ gosec_ver }}
   become: '{{ gosec_privilege_escalate }}'

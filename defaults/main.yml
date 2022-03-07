@@ -1,6 +1,6 @@
 ---
 # defaults file for ansible-gosec
-gosec_ver: 2.5.0
+gosec_ver: 2.10.0
 gosec_os: linux
 gosec_arch: amd64
 gosec_mirror: 'https://github.com/securego/gosec/releases/download'
@@ -9,18 +9,56 @@ gosec_parent_install_dir: /usr/local
 gosec_privilege_escalate: True
 
 gosec_checksums:
-  2.5.0:
-    # https://github.com/securego/gosec/releases/download/v2.5.0/gosec_2.5.0_darwin_amd64.tar.gz
-    darwin_amd64: sha256:bc63bfca51c949d5a16cd7122789f9371530ae83ea9ccd5344ce0585e255391b
-    # https://github.com/securego/gosec/releases/download/v2.5.0/gosec_2.5.0_linux_amd64.tar.gz
-    linux_amd64: sha256:c7d13ddf58d3937939f97c9c33675e9fb1a8eb66ea0a7691ba1f432bfc9c18a4
-  2.4.0:
-    # https://github.com/securego/gosec/releases/download/v2.4.0/gosec_2.4.0_darwin_amd64.tar.gz
-    darwin_amd64: sha256:c5c6897b7da1c3d5be4a27c70e0e48378ae70001348cbeb5f87c1c8e81bcb28e
-    # https://github.com/securego/gosec/releases/download/v2.4.0/gosec_2.4.0_linux_amd64.tar.gz
-    linux_amd64: sha256:3bb01d20a74342251854a429c3fa82a7b642eb6a467926407fda3c1364531c9d
-  2.3.0:
+  '2.3.0':
     # https://github.com/securego/gosec/releases/download/v2.3.0/gosec_2.3.0_darwin_amd64.tar.gz
     darwin_amd64: sha256:36567a28bb2e206ed93b8cc981fd803118e5beb286a01fe811ea6f935ba82deb
     # https://github.com/securego/gosec/releases/download/v2.3.0/gosec_2.3.0_linux_amd64.tar.gz
     linux_amd64: sha256:4be6ce9a9378b6ad594911b8477c06454fa5c31e56530b3152340294488fc45e
+    # https://github.com/securego/gosec/releases/download/v2.3.0/gosec_2.3.0_windows_amd64.tar.gz
+    windows_amd64: sha256:c74c456a8492c60d86ea09336f792a2b5fa24ec6be4dc6a12d40ae81485bd3aa
+  # https://github.com/securego/gosec/releases/download/v2.4.0/gosec_2.4.0_checksums.txt
+  '2.4.0':
+    # https://github.com/securego/gosec/releases/download/v2.4.0/gosec_2.4.0_darwin_amd64.tar.gz
+    darwin_amd64: sha256:c5c6897b7da1c3d5be4a27c70e0e48378ae70001348cbeb5f87c1c8e81bcb28e
+    # https://github.com/securego/gosec/releases/download/v2.4.0/gosec_2.4.0_linux_amd64.tar.gz
+    linux_amd64: sha256:3bb01d20a74342251854a429c3fa82a7b642eb6a467926407fda3c1364531c9d
+    # https://github.com/securego/gosec/releases/download/v2.4.0/gosec_2.4.0_windows_amd64.tar.gz
+    windows_amd64: sha256:c33e08f4fe83d1b6ea53256330a9227d08f7d3f7edc1a7f4e4aa0dbbaff4ef3b
+  # https://github.com/securego/gosec/releases/download/v2.5.0/gosec_2.5.0_checksums.txt
+  '2.5.0':
+    # https://github.com/securego/gosec/releases/download/v2.5.0/gosec_2.5.0_darwin_amd64.tar.gz
+    darwin_amd64: sha256:bc63bfca51c949d5a16cd7122789f9371530ae83ea9ccd5344ce0585e255391b
+    # https://github.com/securego/gosec/releases/download/v2.5.0/gosec_2.5.0_linux_amd64.tar.gz
+    linux_amd64: sha256:c7d13ddf58d3937939f97c9c33675e9fb1a8eb66ea0a7691ba1f432bfc9c18a4
+    # https://github.com/securego/gosec/releases/download/v2.5.0/gosec_2.5.0_windows_amd64.tar.gz
+    windows_amd64: sha256:184a170c3107aa71f980283ae6bf6f08c349271319a4b9d1a7fb7526d428edf9
+  # https://github.com/securego/gosec/releases/download/v2.7.0/gosec_2.7.0_checksums.txt
+  '2.7.0':
+    # https://github.com/securego/gosec/releases/download/v2.7.0/gosec_2.7.0_darwin_amd64.tar.gz
+    darwin_amd64: sha256:024d9ae528f97d014cbaeccc421b289d7906f6acb999b6d90c26934f1a71d329
+    # https://github.com/securego/gosec/releases/download/v2.7.0/gosec_2.7.0_linux_amd64.tar.gz
+    linux_amd64: sha256:164dfcadd7bceee0e439649523d7d70dbe86b812a8db0b80e9f5b9f1464b3954
+    # https://github.com/securego/gosec/releases/download/v2.7.0/gosec_2.7.0_windows_amd64.tar.gz
+    windows_amd64: sha256:76f795ce1fd11bf80b5cd708f4c6b8b380258d14bbffa093a435e41459f50b06
+  # https://github.com/securego/gosec/releases/download/v2.8.0/gosec_2.8.0_checksums.txt
+  '2.8.0':
+    # https://github.com/securego/gosec/releases/download/v2.8.0/gosec_2.8.0_darwin_amd64.tar.gz
+    darwin_amd64: sha256:f54f0c79b602e85b3f177ca6bbfa250b8029419621930ab744d85ff201cc4350
+    # https://github.com/securego/gosec/releases/download/v2.8.0/gosec_2.8.0_darwin_arm64.tar.gz
+    darwin_arm64: sha256:4cc22575a1c8e8beef106c6f07381df19dba74aa62950729e6932e66c122a6fd
+    # https://github.com/securego/gosec/releases/download/v2.8.0/gosec_2.8.0_linux_amd64.tar.gz
+    linux_amd64: sha256:13246cc87960d066b1484d51f3e5ed35c90f441406b62688919165de82b89a07
+    # https://github.com/securego/gosec/releases/download/v2.8.0/gosec_2.8.0_windows_amd64.tar.gz
+    windows_amd64: sha256:1f3c504c2ef60e5d345aa61b1de3d99aa51605a858737c0dbab5ada61459e3fe
+  # https://github.com/securego/gosec/releases/download/v2.10.0/gosec_2.10.0_checksums.txt
+  '2.10.0':
+    # https://github.com/securego/gosec/releases/download/v2.10.0/gosec_2.10.0_darwin_amd64.tar.gz
+    darwin_amd64: sha256:63b134795ac63a7b0ec39c578bdb1854c2416c59d129f323eb5c1d2ac84caffb
+    # https://github.com/securego/gosec/releases/download/v2.10.0/gosec_2.10.0_darwin_arm64.tar.gz
+    darwin_arm64: sha256:8fe59f458683eb01452ac143ebad1b4c7c510bc7a60f7b6924e4351afa78f4ab
+    # https://github.com/securego/gosec/releases/download/v2.10.0/gosec_2.10.0_linux_amd64.tar.gz
+    linux_amd64: sha256:963daf4c6e3b639c16a3ca204c21632dc0636086abcf8677134959897339d0d9
+    # https://github.com/securego/gosec/releases/download/v2.10.0/gosec_2.10.0_windows_amd64.tar.gz
+    windows_amd64: sha256:c6ebae75d506cd57cfef921b3ec73339c1225aa9cf204b74d13840ef5425991c
+    # https://github.com/securego/gosec/releases/download/v2.10.0/gosec_2.10.0_windows_arm64.tar.gz
+    windows_arm64: sha256:29b3e92a021c46284af2c0868051698f7709448d2cfadf6fc68571efa44f5936

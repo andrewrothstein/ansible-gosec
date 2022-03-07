@@ -1,7 +1,8 @@
-vmichel95.gosec
+andrewrothstein.gosec
 =========
+![Build Status](https://github.com/andrewrothstein/ansible-gosec/actions/workflows/build.yml/badge.svg)
 
-Ansible Role for installing [securego / gosec](https://github.com/securego/gosec)
+Installs [gosec](https://github.com/securego/gosec)
 
 Requirements
 ------------
@@ -24,7 +25,7 @@ Example Playbook
 ```yml
 - hosts: servers
   roles:
-    - vmichel95.gosec
+    - andrewrothstein.gosec
 ```
 
 License
@@ -35,4 +36,5 @@ MIT
 Author Information
 ------------------
 
-Victor Michel <victormichel95@gmail.com>
+* Victor Michel <victormichel95@gmail.com>
+* Andrew Rothstein <andrew.rothstein@gmail.com>
