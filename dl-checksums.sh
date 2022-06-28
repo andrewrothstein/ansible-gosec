@@ -36,8 +36,9 @@ dl_ver() {
     dl $ver $app $lchecksums darwin amd64
     dl $ver $app $lchecksums darwin arm64
     dl $ver $app $lchecksums linux amd64
+    dl $ver $app $lchecksums linux arm64
     dl $ver $app $lchecksums windows amd64
     dl $ver $app $lchecksums windows arm64
 }
 
-dl_ver ${1:-2.11.0} gosec
+dl_ver ${1:-2.12.0} gosec
