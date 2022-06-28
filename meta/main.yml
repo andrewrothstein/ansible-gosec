@@ -30,6 +30,7 @@ galaxy_info:
     versions:
       - bionic
       - focal
+      - jammy
   role_name: gosec
 dependencies:
 - andrewrothstein.unarchive-deps
