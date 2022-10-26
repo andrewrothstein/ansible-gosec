@@ -1,5 +1,7 @@
 ---
 # vars file for ansible-gosec
+gosec_os: '{{ ansible_system | lower }}'
+gosec_arch: '{{ gosec_arch_map[ansible_architecture] }}'
 gosec_platform: '{{ gosec_os }}_{{ gosec_arch }}'
 gosec_archive: gosec_{{ gosec_ver }}_{{ gosec_platform }}.{{ gosec_archive_type | default("tar.gz") }}
 gosec_tmp_archive: /tmp/{{ gosec_archive }}

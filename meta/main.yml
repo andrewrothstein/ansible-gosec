@@ -3,10 +3,10 @@ galaxy_info:
   author: Victor Michel
   description: Install securego/gosec for GoLang static application security testing report.
   company: BlackRock Financial Management
-  license: 
+  license:
     - MIT
   min_ansible_version: 2.0
-  galaxy_tags: 
+  galaxy_tags:
     - development
   platforms:
   - name: Alpine
@@ -25,13 +25,11 @@ galaxy_info:
       - 9
   - name: Fedora
     versions:
-      - 35
       - 36
+      - 37
   - name: Ubuntu
     versions:
       - bionic
       - focal
       - jammy
   role_name: gosec
-dependencies:
-- andrewrothstein.unarchive-deps
