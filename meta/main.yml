@@ -3,8 +3,7 @@ galaxy_info:
   author: Victor Michel
   description: Install securego/gosec for GoLang static application security testing report.
   company: BlackRock Financial Management
-  license:
-    - MIT
+  license: MIT
   min_ansible_version: 2.0
   galaxy_tags:
     - development

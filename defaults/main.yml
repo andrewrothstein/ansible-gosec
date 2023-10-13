@@ -1,6 +1,6 @@
 ---
 # defaults file for ansible-gosec
-gosec_ver: 2.17.0
+gosec_ver: 2.18.0
 gosec_arch_map:
   aarch64: arm64
   arm64: arm64
@@ -160,3 +160,17 @@ gosec_checksums:
     windows_amd64: sha256:3edbea2516bd051b18ff2453bc17dd16afb193c8df3c3e3f12b1b0dbbebdfe64
     # https://github.com/securego/gosec/releases/download/v2.17.0/gosec_2.17.0_windows_arm64.tar.gz
     windows_arm64: sha256:ae32545579fadce553f1d67473b598fcd3f1591412cd09ac67a8c470550e9a0c
+  # https://github.com/securego/gosec/releases/download/v2.18.0/gosec_2.18.0_checksums.txt
+  '2.18.0':
+    # https://github.com/securego/gosec/releases/download/v2.18.0/gosec_2.18.0_darwin_amd64.tar.gz
+    darwin_amd64: sha256:41d8b9db840e523e94bdc2019836ab91f981cbfc3f8fcc4731a2f57862a0508c
+    # https://github.com/securego/gosec/releases/download/v2.18.0/gosec_2.18.0_darwin_arm64.tar.gz
+    darwin_arm64: sha256:6d800538bf7d1d86a359c258c2f5662d79531573c682f5863779e9ef31a4b5d5
+    # https://github.com/securego/gosec/releases/download/v2.18.0/gosec_2.18.0_linux_amd64.tar.gz
+    linux_amd64: sha256:4e5d7dbd56758c528dabef0e7cee0115cc60d1c58497eb20c1f23fb5612fb5d0
+    # https://github.com/securego/gosec/releases/download/v2.18.0/gosec_2.18.0_linux_arm64.tar.gz
+    linux_arm64: sha256:7934b22504294b13c0cbcd594512cba37f1417b76057b420ffc052202c7c8a11
+    # https://github.com/securego/gosec/releases/download/v2.18.0/gosec_2.18.0_windows_amd64.tar.gz
+    windows_amd64: sha256:e266dc65555a52a54bf400295a547036129adb1b2585049590f7ad2defed0cc4
+    # https://github.com/securego/gosec/releases/download/v2.18.0/gosec_2.18.0_windows_arm64.tar.gz
+    windows_arm64: sha256:52bbdcd668eac91acad3233690d8caba70ebec787851bab3a5d1b892861ea105
