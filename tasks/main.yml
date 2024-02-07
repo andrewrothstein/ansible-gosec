@@ -1,9 +1,10 @@
 ---
 # tasks file for ansible-gosec
-- include_role:
+- name: Installing andrewrothstein.unarchivedeps
+  ansible.builtin.include_role:
     name: andrewrothstein.unarchivedeps
-- name: resolve platform specific vars
-  include_vars: '{{ item }}'
+- name: Resolve platform specific vars
+  ansible.builtin.include_vars: '{{ item }}'
   with_first_found:
     - files:
         - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
@@ -12,52 +13,53 @@
       skip: true
       paths:
         - '{{ role_path }}/vars'
-- name: look for existing install in {{ gosec_install_dir }}
+- name: Look for existing install in {{ gosec_install_dir }}
   become: '{{ gosec_privilege_escalate }}'
   become_user: root
   changed_when: false
-  stat:
+  ansible.builtin.stat:
     path: '{{ gosec_install_dir }}'
   register: gosec_binary
-- when: not gosec_binary.stat.exists
+- name: Downloading and installing gosec
+  when: not gosec_binary.stat.exists
   block:
-    - name: downloading {{ gosec_url }}
+    - name: Downloading {{ gosec_url }}
       become: '{{ gosec_privilege_escalate }}'
       become_user: root
-      get_url:
+      ansible.builtin.get_url:
         url: '{{ gosec_url }}'
         checksum: '{{ gosec_checksum }}'
         dest: '{{ gosec_tmp_archive }}'
-        mode: 0644
-    - name: mkdir {{ gosec_install_dir }}
+        mode: '644'
+    - name: Mkdir {{ gosec_install_dir }}
       become: '{{ gosec_privilege_escalate }}'
       become_user: root
-      file:
+      ansible.builtin.file:
         path: '{{ gosec_install_dir }}'
         state: directory
-        mode: 0755
-    - name: unarchive {{ gosec_tmp_archive }} to {{ gosec_install_dir }}
+        mode: '755'
+    - name: Unarchive {{ gosec_tmp_archive }} to {{ gosec_install_dir }}
       become: '{{ gosec_privilege_escalate }}'
       become_user: root
-      unarchive:
+      ansible.builtin.unarchive:
         remote_src: true
         src: '{{ gosec_tmp_archive }}'
         dest: '{{ gosec_install_dir }}'
         creates: '{{ gosec_install_exe }}'
   always:
-    - name: rm -f {{ gosec_tmp_archive }}
+    - name: Rm -f {{ gosec_tmp_archive }}
       become: '{{ gosec_privilege_escalate }}'
       become_user: root
-      file:
+      ansible.builtin.file:
         path: '{{ gosec_tmp_archive }}'
         state: absent
-- name: link gosec and gosec-{{ gosec_ver }}
+- name: Link gosec and gosec-{{ gosec_ver }}
   become: '{{ gosec_privilege_escalate }}'
   become_user: root
   with_items:
     - '{{ gosec_link }}'
     - '{{ gosec_ver_link }}'
-  file:
+  ansible.builtin.file:
     src: '{{ gosec_install_exe }}'
     dest: '{{ item }}'
     state: link

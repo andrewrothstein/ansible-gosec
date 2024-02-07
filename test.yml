@@ -1,10 +1,13 @@
 ---
-- hosts: all
+- name: Testing andrewrothstein.gosec
+  hosts: all
   roles:
-  - role: '{{ playbook_dir }}'
+    - role: '{{ playbook_dir }}'
   tasks:
-  - command: /usr/local/bin/gosec --version
-    register: gosec_test_output
-  - name: gosec --version
-    debug:
-      msg: '{{ gosec_test_output.stdout }}'
+    - name: Executing 'gosec --version'
+      ansible.builtin.command: gosec --version
+      changed_when: false
+      register: gosec_test_output
+    - name: Output from 'gosec --version'
+      ansible.builtin.debug:
+        msg: '{{ gosec_test_output.stdout }}'
