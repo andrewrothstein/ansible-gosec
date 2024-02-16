@@ -41,4 +41,4 @@ dl_ver() {
     dl $ver $app $lchecksums windows arm64
 }
 
-dl_ver ${1:-2.18.2} gosec
+dl_ver ${1:-2.19.0} gosec
